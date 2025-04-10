@@ -54,6 +54,7 @@ Princip:
 2. Zaměníme ho s prvkem na první pozici
 3. Na první pozici se nyní nachází správný prvek, zbytek posloupnosti se uspořádá opakováním pro zbylých n-1 prvků
 
+![Selection Sort Step By Step](https://github.com/user-attachments/assets/be6636bb-343a-4e42-ad9f-d20c399186b7)
 ![Selection Sort Animation](https://res.cloudinary.com/practicaldev/image/fetch/s--WVWaPIiL--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_800/https://tutorialhorizon.com/static/media/algorithms/2019/01/Selection-Sort-Gif.gif)
 
 ```java

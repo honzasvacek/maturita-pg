@@ -82,47 +82,29 @@ System.out.println(s);
 Slouží k efektivnímu vyhodnocení polynomu nebo převodu mezi soustavami.
 
 #### Pro vyhodnocení polynomu:
-Pro polynom P(x) = a₀ + a₁x + a₂x² + ... + aₙxⁿ:
-
+Mějme polynom libovolného stupně: P(x) = aₙxⁿ + ... + a₂x² + a₁x + a₀(např. 4x² + 2x + 6)
+a hodnotu x, pro kterou chceme daný polynom vypočítat(např. x = 3)
+Algoritmus je založen na tom, že je polynom zapsaný v nořené formě(vytýkám x):
+Polynom P(x) = a0 + a1 * x + a2 * x^2 + ... + an * x^n se postupním vytýkáním x dá zapsat jako: P(x) = a0 + x * (a1 + x * (a2 + ... + x * (a(n-1) + an * x)...)) Začínám od koeficientu a0 ale pro lepší představu můžu zařít od koeficentu aₙ.
+Mějme polynom 4x² + 2x + 6, který lze zapsat jako 6 + x(2 + 4x) a x = 2. Začnu tím, že do proměnné výsledek uložím
+koeficent aₙ tedy 4. To je inicializace proměnné. Poté výsledek vynásobím x (2) a přičtu koeficent o an-1. V dalším kroku výsledek vynásobím x (2) a přičtu koeficient an-2 (6) a program skončí. 
 ```java
 // Hornerovo schéma pro vyhodnocení polynomu
-double hornerPolynom(double[] koeficienty, double x) {
-    // koeficienty[i] je koeficient u x^i
-    double vysledek = koeficienty[koeficienty.length - 1];
+double[] coefficients = {3, -2, 5, -1, 7};  // Coefficients: a4 = 3, a3 = -2, a2 = 5, a1 = -1, a0 = 7
+double x = 2;  // Value of x for which to evaluate the polynomial
+public static double evaluatePolynomialFromAn(double[] coefficients, double x) {
+    double result = coefficients[coefficients.length - 1];  // Start with the highest degree coefficient an
     
-    for (int i = koeficienty.length - 2; i >= 0; i--) {
-        vysledek = vysledek * x + koeficienty[i];
+    // Loop through each coefficient starting from an-1 to a0
+    for (int i = coefficients.length - 2; i >= 0; i--) {
+        result = result * x + coefficients[i];  // Horner's method step
     }
     
-    return vysledek;
+    return result;  // Final result is the value of the polynomial at x
 }
 ```
 
 Složitost: O(n), kde n je stupeň polynomu.
-
-#### Pro převod mezi soustavami:
-Při převodu z jiné soustavy do desítkové:
-
-```java
-// Převod z libovolné soustavy do desítkové pomocí Hornerova schématu
-int prevodDoDesitkoveSoustavy(String cislo, int zaklad) {
-    int vysledek = 0;
-    
-    for (int i = 0; i < cislo.length(); i++) {
-        char znak = cislo.charAt(i);
-        int hodnota;
-        if (Character.isDigit(znak)) {
-            hodnota = znak - '0';
-        } else {
-            hodnota = Character.toUpperCase(znak) - 'A' + 10;
-        }
-        
-        vysledek = vysledek * zaklad + hodnota;
-    }
-    
-    return vysledek;
-}
-```
 
 ## Testy prvočíselnosti
 
@@ -146,6 +128,9 @@ Složitost: O(√n)
 
 ## Eratosthenovo síto
 Efektivní algoritmus pro nalezení všech prvočísel do určitého limitu.
+- Začnu procházet boolean pole, kde ze začátku jsou všechna čísla potencionálně prvočísla. Když příjdu k číslu (začátek 2), které dosud nebylo vyškrtnutp(hodnota by byla false), zapíšu si toto číslo jako prvočíslo a vyškrtám všechny jeho násobky. Algoritmus pokračuje dál (číslo 3) zapíše si ho jako prvočíslo a všechny jeho násobky vyškrtá(nastaví na false). To je základní princip síta. Jsou tu dvě zásadní optimalizace:
+  1) Vždy když začínám vyškrtávat násobky daného prvočísla nemusím začínat od prvního násobku ale od druhé mocniny daného prvočísla. Např. pro číslo 3 bych mohl začít vyšktávat 6, 9, ... . Všimněme si ale, že můžu začít vyškrtávat od 9 (3 2), protože 6 byla již vyškrtnutamenším prvočíslem(v tomto případě číslem 2).
+  2) Když dojdu k číslu 11 a n = 100, pak 11 2 je 121. 121 > 100, takže nemá smysl pokračovat. Ani u vyškrtnuté desítky již nemá smysl pokračovat. Proto nechodím ve for cyklu do n ale do odmocniny z n. Protože, když je n např 100, tak u čísla 10 už mám všechny čísla co nejsou prvočísla nastavené na false a všechna prvočísla na true a můžu vypsat pole, kde je hodnota true, čímž jsem získal všechny provčísla pro n = 100.
 
 ```java
 // Implementace Eratosthenova síta
@@ -171,7 +156,7 @@ boolean[] eratosthenovoSito(int n) {
     return jePrvocislo;
 }
 ```
-
+![Eratosthenovo sito animace](https://upload.wikimedia.org/wikipedia/commons/b/b9/Sieve_of_Eratosthenes_animation.gif)
 Složitost: O(n log log n)
 Paměťová: O(n)
 

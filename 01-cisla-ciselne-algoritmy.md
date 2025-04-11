@@ -85,9 +85,10 @@ Slouží k efektivnímu vyhodnocení polynomu nebo převodu mezi soustavami.
 Mějme polynom libovolného stupně: P(x) = aₙxⁿ + ... + a₂x² + a₁x + a₀(např. 4x² + 2x + 6)
 a hodnotu x, pro kterou chceme daný polynom vypočítat(např. x = 3)
 Algoritmus je založen na tom, že je polynom zapsaný v nořené formě(vytýkám x):
-Polynom P(x) = a0 + a1 * x + a2 * x^2 + ... + an * x^n se postupním vytýkáním x dá zapsat jako: P(x) = a0 + x * (a1 + x * (a2 + ... + x * (a(n-1) + an * x)...)) Začínám od koeficientu a0 ale pro lepší představu můžu zařít od koeficentu aₙ.
+Polynom P(x) = a0 + a1 * x + a2 * x^2 + ... + an * x^n se postupním vytýkáním x dá zapsat jako: P(x) = a0 + x * (a1 + x * (a2 + ... + x * (a(n-1) + an * x)...)). 
+Začínám od koeficientu a0 ale pro lepší představu můžu začít od koeficentu aₙ.
 Mějme polynom 4x² + 2x + 6, který lze zapsat jako 6 + x(2 + 4x) a x = 2. Začnu tím, že do proměnné výsledek uložím
-koeficent aₙ tedy 4. To je inicializace proměnné. Poté výsledek vynásobím x (2) a přičtu koeficent o an-1. V dalším kroku výsledek vynásobím x (2) a přičtu koeficient an-2 (6) a program skončí. 
+koeficent aₙ tedy 4. To je inicializace proměnné. Poté výsledek vynásobím x (2) a přičtu koeficent o an-1 (2). V dalším kroku výsledek vynásobím x (2) a přičtu koeficient an-2 (6) a program skončí. Algoritmus funguje jako by postupoval člověk, který začne v nejíc zanořené závorce koeficient vynásobí x a přičte koeficent an-1, který je v závorce. Následně si výsledek pamatuje, zapíše si ho a pokračuje dál tím, že výsledek vynásobí x a přičte koeficent v závorce, dokud nedojde na konec. Stejně funguje algoritmus:
 ```java
 // Hornerovo schéma pro vyhodnocení polynomu
 double[] coefficients = {3, -2, 5, -1, 7};  // Coefficients: a4 = 3, a3 = -2, a2 = 5, a1 = -1, a0 = 7
@@ -108,6 +109,7 @@ Složitost: O(n), kde n je stupeň polynomu.
 
 ## Testy prvočíselnosti
 
+Zde zase stačí jít do odmociny z n. Místo i < odmocnina z n uděláme i*i < n.
 ### Naivní test
 ```java
 boolean jePrvocislo(int n) {
@@ -130,7 +132,7 @@ Složitost: O(√n)
 Efektivní algoritmus pro nalezení všech prvočísel do určitého limitu.
 - Začnu procházet boolean pole, kde ze začátku jsou všechna čísla potencionálně prvočísla. Když příjdu k číslu (začátek 2), které dosud nebylo vyškrtnutp(hodnota by byla false), zapíšu si toto číslo jako prvočíslo a vyškrtám všechny jeho násobky. Algoritmus pokračuje dál (číslo 3) zapíše si ho jako prvočíslo a všechny jeho násobky vyškrtá(nastaví na false). To je základní princip síta. Jsou tu dvě zásadní optimalizace:
   1) Vždy když začínám vyškrtávat násobky daného prvočísla nemusím začínat od prvního násobku ale od druhé mocniny daného prvočísla. Např. pro číslo 3 bych mohl začít vyšktávat 6, 9, ... . Všimněme si ale, že můžu začít vyškrtávat od 9 (3 2), protože 6 byla již vyškrtnutamenším prvočíslem(v tomto případě číslem 2).
-  2) Když dojdu k číslu 11 a n = 100, pak 11 2 je 121. 121 > 100, takže nemá smysl pokračovat. Ani u vyškrtnuté desítky již nemá smysl pokračovat. Proto nechodím ve for cyklu do n ale do odmocniny z n. Protože, když je n např 100, tak u čísla 10 už mám všechny čísla co nejsou prvočísla nastavené na false a všechna prvočísla na true a můžu vypsat pole, kde je hodnota true, čímž jsem získal všechny provčísla pro n = 100.
+  2) Když dojdu k číslu 11 a n = 100, pak 11 2 je 121. 121 > 100, takže nemá smysl pokračovat. Ani u vyškrtnuté desítky již nemá smysl pokračovat. Proto nechodím ve for cyklu do n ale do odmocniny z n(místo i < n použiji i*i < n). Protože, když je n např 100, tak u čísla 10 už mám všechny čísla co nejsou prvočísla nastavené na false a všechna prvočísla na true a můžu vypsat pole, kde je hodnota true, čímž jsem získal všechny provčísla pro n = 100.
 
 ```java
 // Implementace Eratosthenova síta
@@ -169,17 +171,7 @@ Nevýhody:
 
 ## Eukleidův algoritmus
 Algoritmus pro nalezení největšího společného dělitele (NSD) dvou čísel.
-
-### Rekurzivní varianta
-```java
-// Rekurzivní Eukleidův algoritmus
-int nsd(int a, int b) {
-    if (b == 0) {
-        return a;
-    }
-    return nsd(b, a % b);
-}
-```
+Algoritmus vychází z tohoto? NSD(150, 15) = NSD(15, 150 - qv) = NSD(15, 150 - 10*15) = NSD(15, 0) = 15
 
 ### Iterativní varianta
 ```java
@@ -195,6 +187,21 @@ int nsd(int a, int b) {
 ```
 
 Složitost: O(log(min(a, b)))
+
+První iterace:
+    a = 50, b = 30
+    a % b = 50 % 30 = 20
+    Nové hodnoty: a = 30, b = 20
+Druhá iterace:
+    a = 30, b = 20
+    a % b = 30 % 20 = 10
+    Nové hodnoty: a = 20, b = 10
+Třetí iterace:
+    a = 20, b = 10
+    a % b = 20 % 10 = 0
+    Nové hodnoty: a = 10, b = 0
+
+Opakovaně prováděné operace nemění hodnotu největšího společného dělitele (neboť NSD(u, v) = NSD(v, u – qv) pro libovolné celé číslo q), ale v každém kroku se hodnota proměnné v sníží, takže je zřejmé, že v konečném počtu kroků se algoritmus ukončí s tím, že v je nulové. Tehdy obsahuje proměnná u největší společný dělitel, neboť NSD(u, 0) = u, což musí být současně největší společný dělitel původních čísel, neboť, jak už bylo uvedeno, hlavní smyčka programu hodnotu největšího společného dělitele nemění. 
 
 ## Rozklad na prvočísla
 Algoritmus pro rozklad čísla na prvočísla.

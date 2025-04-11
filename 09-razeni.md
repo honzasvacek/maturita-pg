@@ -85,6 +85,8 @@ Princip:
 1. Procházíme prvky postupně
 2. Každý další nesetříděný prvek zařadíme na správné místo do již setříděné posloupnosti
 
+![Insertion Sort](https://www.google.com/url?sa=i&url=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3AInsertion-sort-example.gif&psig=AOvVaw3DJvt0L2fC9NhEeD3_VzE9&ust=1744457316086000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCKCr7Ynyz4wDFQAAAAAdAAAAABAE)
+
 ```java
 void insertionSort(int[] arr) {
     for (int i = 1; i < arr.length; i++) {
@@ -112,6 +114,8 @@ Princip:
 2. Porovnáváme každé dva sousedící prvky
 3. Pokud nejsou ve správném pořadí, prohodíme je
 4. Největší prvky "probublávají" na konec seznamu
+
+![Bubble Sort](https://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif)
 
 ```java
 void bubbleSort(int[] arr) {
@@ -145,6 +149,8 @@ Princip Heap Sort:
 1. Vytvoříme z pole haldu (operace "heapify")
 2. Opakovaně odebíráme kořen haldy (největší prvek) a umisťujeme ho na konec pole
 3. Po každém odebrání znovu provedeme "heapify" pro zbytek haldy
+
+![Heap Sort](https://upload.wikimedia.org/wikipedia/commons/f/fe/Heap_sort_example.gif)
 
 ```java
 void heapSort(int[] arr) {
@@ -208,6 +214,8 @@ Princip (metoda "rozděl a panuj"):
 2. Přesuneme prvky menší než pivot před něj a větší za něj (partitioning)
 3. Rekurzivně seřadíme obě části
 
+![Quick Sort](https://upload.wikimedia.org/wikipedia/commons/9/9c/Quicksort-example.gif)
+
 ```java
 void quickSort(int[] arr, int low, int high) {
     if (low < high) {
@@ -256,6 +264,8 @@ Princip (metoda "rozděl a panuj"):
 1. Rozdělíme pole na dvě poloviny
 2. Rekurzivně seřadíme obě poloviny
 3. Sloučíme obě seřazené poloviny do jednoho seřazeného pole
+
+![Merge Sort](https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif)
 
 ```java
 void mergeSort(int[] arr, int l, int r) {
@@ -333,6 +343,8 @@ Vlastnosti:
 Princip:
 1. Řadíme čísla podle jednotlivých řádů (jednotky, desítky, stovky, ...) od nejnižšího k nejvyššímu
 2. Pro každý řád použijeme stabilní řazení (typicky Counting Sort)
+
+![Radix Sort](https://upload.wikimedia.org/wikipedia/commons/0/04/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F.gif)
 
 Omezení:
 - Použitelný pouze pro celá čísla

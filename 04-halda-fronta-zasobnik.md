@@ -19,6 +19,8 @@ Zásobník je lineární datová struktura, která pracuje na principu LIFO (Las
 - Neexistuje přímý přístup k ostatním prvkům
 - Neomezený počet prvků (jen paměť)
 
+![Zásobník](https://miro.medium.com/v2/resize:fit:1400/1*tQ9Y11OdaMnhXwbfCF-edA.gif)
+
 ### Reprezentace v programu
 Zásobník lze implementovat pomocí:
 1. **Pole** - jednoduché, ale s pevnou velikostí
@@ -46,6 +48,24 @@ Všechny základní operace mají časovou složitost O(1) - konstantní.
 - Nemožnost iterovat bez destrukce
 - Stack overflow - přetečení při příliš mnoha prvcích
 
+### Každá rekurze se dá nahradit cyklem a zásobníkem:
+```
+Pokud kořen == null:
+    return
+
+stack.push(kořen)
+
+Dokud stack není prázdný:
+    node = stack.pop()
+    System.out.println(node.info)
+    
+    Pokud node.right != null:
+        stack.push(node.right)
+    
+    Pokud node.left != null:
+        stack.push(node.left)
+```
+
 ## Fronta (Queue)
 
 Fronta je lineární datová struktura, která pracuje na principu FIFO (First In, First Out) - první dovnitř, první ven.
@@ -54,6 +74,8 @@ Fronta je lineární datová struktura, která pracuje na principu FIFO (First I
 - Přidává prvky na jeden konec (zadní) a odebírá z druhého konce (přední)
 - Přístup jen k přednímu prvku
 - Spravedlivé zpracování (kdo dřív přijde, je dřív na řadě)
+
+![Fronta](https://scaler.com/topics/images/working-of-java-queue.gif)
 
 ### Reprezentace v programu
 Frontu lze implementovat pomocí:
@@ -85,6 +107,26 @@ Všechny základní operace mají časovou složitost O(1).
 - Při implementaci pomocí pole potřeba řešit kruhovou frontu
 - Nemožnost náhodného přístupu
 
+### Průchod stromu do šířky
+-např. algoritmus vlny
+```
+Pokud kořen == null:
+    return
+
+queue = nový prázdný seznam
+queue.enqueue(kořen)
+
+Dokud queue není prázdná:
+    node = queue.dequeue()
+    System.out.println(node.info)
+    
+    Pokud node.left != null:
+        queue.enqueue(node.left)
+    
+    Pokud node.right != null:
+        queue.enqueue(node.right)
+```
+
 ## Halda (Heap)
 
 Halda je speciální stromová struktura, která splňuje tzv. haldovou vlastnost.
@@ -99,6 +141,7 @@ Halda je speciální stromová struktura, která splňuje tzv. haldovou vlastnos
 Haldu lze implementovat pomocí:
 1. **Pole** - efektivní implicitní reprezentace
 2. **Stromové struktury** - méně běžné, větší režie
+- Halda se dobře představuje jako strom ale používá se jako pole
 
 Při reprezentaci polem:
 - Kořen je na indexu 0 (nebo 1, podle implementace)
@@ -134,6 +177,9 @@ Při reprezentaci polem:
 - Nalezení k největších/nejmenších prvků
 - Algoritmy pro hledání cest (např. Dijkstrův algoritmus)
 - Huffmanovo kódování
+
+Heapsort = třídění haldou:
+![Heapsort](https://upload.wikimedia.org/wikipedia/commons/f/fe/Heap_sort_example.gif)
 
 ### Úskalí
 - Nemožnost efektivně vyhledávat jiné než maximální/minimální prvky

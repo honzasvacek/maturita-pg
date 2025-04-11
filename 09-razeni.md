@@ -85,7 +85,7 @@ Princip:
 1. Procházíme prvky postupně
 2. Každý další nesetříděný prvek zařadíme na správné místo do již setříděné posloupnosti
 
-![Insertion Sort](https://www.google.com/url?sa=i&url=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3AInsertion-sort-example.gif&psig=AOvVaw3DJvt0L2fC9NhEeD3_VzE9&ust=1744457316086000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCKCr7Ynyz4wDFQAAAAAdAAAAABAE)
+![Insertion Sort](https://upload.wikimedia.org/wikipedia/commons/9/9c/Insertion-sort-example.gif)
 
 ```java
 void insertionSort(int[] arr) {

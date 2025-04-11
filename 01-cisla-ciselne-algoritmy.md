@@ -22,18 +22,42 @@
 
 Celá čísla jsou v paměti uložena ve dvojkovém doplňkovém kódu pro reprezentaci záporných čísel.
 
-### Reálná čísla
-V počítači nejsou ukládána přesná reálná čísla, ale jen jejich racionální aproximace:
-- `float`: 32 bitů, standard IEEE 754
-- `double`: 64 bitů, standard IEEE 754
+### Racionální čísla
+- Racionální čísla lze zapsat jako zlomek dvou celých čísel:
+  ```
+  a / b, kde a ∈ ℤ, b ∈ ℤ a b ≠ 0
+  ```
+- Příklady:
+  - `0.5 = 1 / 2`
+  - `-3 = -3 / 1`
+  - `7.25 = 29 / 4`
 
-Formát s plovoucí desetinnou čárkou:
-- Znaménkový bit (1 bit)
-- Exponent (8 bitů pro float, 11 bitů pro double)
-- Mantisa (23 bitů pro float, 52 bitů pro double)
+## Ukládání čísel v počítači
+- Počítače používají **dvojkovou (binární) soustavu**
+- Desetinná čísla jsou reprezentována pomocí **plovoucí řádové čárky**
 
-Číslo = (-1)^znaménkový_bit × mantisa × 2^exponent
+## Vědecký zápis čísel
+- V běžné matematice (desítkově):
+  ```
+  1.55 × 10ⁿ
+  ```
+- V počítači (binárně):
+  ```
+  1.1001... × 2ⁿ
+  ```
+  - `1.1001...` je **mantisa** (v binární podobě)
+  - `2` je základ soustavy
+  - `n` je **exponent** (také v binární podobě)
+  - `2ⁿ` znamená posun desetinné (resp. binární) čárky o n pozic vlevo/vpravo
+  - `n` je celé číslo (kladné nebo záporné), uložené v binárním formátu
 
+## Shrnutí
+- Racionální čísla lze převést na binární zlomek
+- V počítači jsou uložena jako:
+  ```
+  mantisa × 2^exponent
+  ```
+  
 ### Čísla s velkým počtem číslic
 Pro práci s čísly o velkém počtu číslic:
 - `BigInteger`: pro celá čísla neomezené velikosti
@@ -44,18 +68,14 @@ Pro práci s čísly o velkém počtu číslic:
 ### Převod z desítkové do jiné soustavy
 Algoritmus:
 ```java
-// Převod z desítkové soustavy do soustavy o základu b
-String prevodDoDruheSoustavy(int cislo, int zaklad) {
-    String vysledek = "";
-    while (cislo > 0) {
-        int zbytek = cislo % zaklad;
-        // Pro základy > 10 konvertujeme číslice nad 9 na písmena
-        char znak = (zbytek < 10) ? (char)('0' + zbytek) : (char)('A' + (zbytek - 10));
-        vysledek = znak + vysledek;
-        cislo = cislo / zaklad;
-    }
-    return vysledek;
+// Převod z desítkové soustavy do trojkové soustavy
+String s = "";
+while(x > 0) {
+   //s += x % 3;
+   s = "" + (x % 3) + s; //takhle přidám na začátek
+   x /= 3;
 }
+System.out.println(s);
 ```
 
 ### Hornerovo schéma
@@ -153,6 +173,7 @@ boolean[] eratosthenovoSito(int n) {
 ```
 
 Složitost: O(n log log n)
+Paměťová: O(n)
 
 Výhody:
 - Velmi efektivní pro hledání prvočísel do velkého limitu

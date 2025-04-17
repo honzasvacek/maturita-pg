@@ -130,7 +130,7 @@ Složitost: O(n), kde n je stupeň polynomu.
 ## Eratosthenovo síto
 Efektivní algoritmus pro nalezení všech prvočísel do určitého limitu.
 - Začnu procházet boolean pole, kde ze začátku jsou všechna čísla potencionálně prvočísla. Když příjdu k číslu (začátek 2), které dosud nebylo vyškrtnutp(hodnota by byla false), zapíšu si toto číslo jako prvočíslo a vyškrtám všechny jeho násobky. Algoritmus pokračuje dál (číslo 3) zapíše si ho jako prvočíslo a všechny jeho násobky vyškrtá(nastaví na false). To je základní princip síta. Jsou tu dvě zásadní optimalizace:
-  1) Vždy když začínám vyškrtávat násobky daného prvočísla nemusím začínat od prvního násobku ale od druhé mocniny daného prvočísla. Např. pro číslo 3 bych mohl začít vyšktávat 6, 9, ... . Všimněme si ale, že můžu začít vyškrtávat od 9 (3 2), protože 6 byla již vyškrtnutamenším prvočíslem(v tomto případě číslem 2).
+  1) Vždy když začínám vyškrtávat násobky daného prvočísla nemusím začínat od prvního násobku ale od druhé mocniny daného prvočísla. Např. pro číslo 3 bych mohl začít vyšktávat 6, 9, ... . Všimněme si ale, že můžu začít vyškrtávat od 9 (3 2), protože 6 byla již vyškrtnutamenším menším prvočíslem(v tomto případě číslem 2).
   2) Když dojdu k číslu 11 a n = 100, pak 11 2 je 121. 121 > 100, takže nemá smysl pokračovat. Ani u vyškrtnuté desítky již nemá smysl pokračovat. Proto nechodím ve for cyklu do n ale do odmocniny z n(místo i < n použiji i*i < n). Protože, když je n např 100, tak u čísla 10 už mám všechny čísla co nejsou prvočísla nastavené na false a všechna prvočísla na true a můžu vypsat pole, kde je hodnota true, čímž jsem získal všechny provčísla pro n = 100.
 
 ```java

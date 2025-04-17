@@ -127,27 +127,6 @@ public static double evaluatePolynomialFromAn(double[] coefficients, double x) {
 
 Složitost: O(n), kde n je stupeň polynomu.
 
-## Testy prvočíselnosti
-
-Zde zase stačí jít do odmociny z n. Místo i < odmocnina z n uděláme i*i < n.
-### Naivní test
-```java
-boolean jePrvocislo(int n) {
-    if (n <= 1) return false;
-    if (n <= 3) return true;
-    if (n % 2 == 0 || n % 3 == 0) return false;
-    
-    // Testujeme dělitelnost pouze lichými čísly většími než 3
-    for (int i = 5; i * i <= n; i += 2) {
-        if (n % i == 0) return false;
-    }
-    
-    return true;
-}
-```
-
-Složitost: O(√n)
-
 ## Eratosthenovo síto
 Efektivní algoritmus pro nalezení všech prvočísel do určitého limitu.
 - Začnu procházet boolean pole, kde ze začátku jsou všechna čísla potencionálně prvočísla. Když příjdu k číslu (začátek 2), které dosud nebylo vyškrtnutp(hodnota by byla false), zapíšu si toto číslo jako prvočíslo a vyškrtám všechny jeho násobky. Algoritmus pokračuje dál (číslo 3) zapíše si ho jako prvočíslo a všechny jeho násobky vyškrtá(nastaví na false). To je základní princip síta. Jsou tu dvě zásadní optimalizace:
@@ -222,6 +201,27 @@ Třetí iterace:
     Nové hodnoty: a = 10, b = 0
 
 Opakovaně prováděné operace nemění hodnotu největšího společného dělitele (neboť NSD(u, v) = NSD(v, u – qv) pro libovolné celé číslo q), ale v každém kroku se hodnota proměnné v sníží, takže je zřejmé, že v konečném počtu kroků se algoritmus ukončí s tím, že v je nulové. Tehdy obsahuje proměnná u největší společný dělitel, neboť NSD(u, 0) = u, což musí být současně největší společný dělitel původních čísel, neboť, jak už bylo uvedeno, hlavní smyčka programu hodnotu největšího společného dělitele nemění. 
+
+## Testy prvočíselnosti
+
+Zde zase stačí jít do odmociny z n. Místo i < odmocnina z n uděláme i*i < n.
+### Naivní test
+```java
+boolean jePrvocislo(int n) {
+    if (n <= 1) return false;
+    if (n <= 3) return true;
+    if (n % 2 == 0 || n % 3 == 0) return false;
+    
+    // Testujeme dělitelnost pouze lichými čísly většími než 3
+    for (int i = 5; i * i <= n; i += 2) {
+        if (n % i == 0) return false;
+    }
+    
+    return true;
+}
+```
+
+Složitost: O(√n)
 
 ## Rozklad na prvočísla
 Algoritmus pro rozklad čísla na prvočísla.

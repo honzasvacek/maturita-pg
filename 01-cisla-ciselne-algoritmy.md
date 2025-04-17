@@ -51,6 +51,17 @@ Celá čísla jsou v paměti uložena ve dvojkovém doplňkovém kódu pro repre
   - `2ⁿ` znamená posun desetinné (resp. binární) čárky o n pozic vlevo/vpravo
   - `n` je celé číslo (kladné nebo záporné), uložené v binárním formátu
 
+Reprezentace celých čísel
+1. Bez znaménka (Unsigned Integer)
+	•	Používá všechny bity k reprezentaci kladných čísel (včetně nuly)
+	•	Např. 8bitové číslo může nabývat hodnot 0 až 255 (2⁸ = 256 možných hodnot)
+2. Se znaménkem (Signed Integer)
+	•	Používá jeden bit (nejvyšší bit, tzv. MSB – Most Significant Bit) jako znaménkový bit:
+	◦	0 znamená kladné číslo
+	◦	1 znamená záporné číslo
+	▪	nejpoužívanější – dvojkový doplněk => první číslo v dvojkové soustavě posloupnosti značí, že výsledné číslo v desítkové soustavě bude záporné, viz obrázek dole
+
+
 ## Shrnutí
 - Racionální čísla lze převést na binární zlomek
 - V počítači jsou uložena jako:

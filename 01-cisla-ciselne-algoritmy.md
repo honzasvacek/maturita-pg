@@ -96,10 +96,19 @@ Slouží k efektivnímu vyhodnocení polynomu nebo převodu mezi soustavami.
 Mějme polynom libovolného stupně: P(x) = aₙxⁿ + ... + a₂x² + a₁x + a₀(např. 4x² + 2x + 6)
 a hodnotu x, pro kterou chceme daný polynom vypočítat(např. x = 3)
 Algoritmus je založen na tom, že je polynom zapsaný v nořené formě(vytýkám x):
-Polynom P(x) = a0 + a1 * x + a2 * x^2 + ... + an * x^n se postupním vytýkáním x dá zapsat jako: P(x) = a0 + x * (a1 + x * (a2 + ... + x * (a(n-1) + an * x)...)). 
+Polynom P(x) = a0 + a1 * x + a2 * x^2 + ... + an * x^n se postupním vytýkáním x dá zapsat jako: 
+P(x) = a0 + x * (a1 + x * (a2 + ... + x * (a(n-1) + an * x)...)). 
 Začínám od koeficientu a0 ale pro lepší představu můžu začít od koeficentu aₙ.
-Mějme polynom 4x² + 2x + 6, který lze zapsat jako 6 + x(2 + 4x) a x = 2. Začnu tím, že do proměnné výsledek uložím
-koeficent aₙ tedy 4. To je inicializace proměnné. Poté výsledek vynásobím x (2) a přičtu koeficent o an-1 (2). V dalším kroku výsledek vynásobím x (2) a přičtu koeficient an-2 (6) a program skončí. Algoritmus funguje jako by postupoval člověk, který začne v nejíc zanořené závorce koeficient vynásobí x a přičte koeficent an-1, který je v závorce. Následně si výsledek pamatuje, zapíše si ho a pokračuje dál tím, že výsledek vynásobí x a přičte koeficent v závorce, dokud nedojde na konec. Stejně funguje algoritmus:
+Mějme polynom 4x² + 2x + 6, který lze zapsat jako 6 + x(2 + 4x) a x = 2. 
+Začnu tím, že do proměnné výsledek uložím
+koeficent aₙ tedy 4. To je inicializace proměnné. 
+Poté výsledek vynásobím x (2) a přičtu koeficent o an-1 (2). 
+V dalším kroku výsledek vynásobím x (2) a přičtu koeficient an-2 (6) a program skončí. 
+Algoritmus funguje jako by postupoval člověk, 
+který začne v nejíc zanořené závorce koeficient vynásobí x a přičte koeficent an-1, 
+který je v závorce. Následně si výsledek pamatuje, zapíše si ho a pokračuje dál tím, 
+že výsledek vynásobí x a přičte koeficent v závorce, dokud nedojde na konec. 
+Stejně funguje algoritmus:
 ```java
 // Hornerovo schéma pro vyhodnocení polynomu
 double[] coefficients = {3, -2, 5, -1, 7};  // Coefficients: a4 = 3, a3 = -2, a2 = 5, a1 = -1, a0 = 7

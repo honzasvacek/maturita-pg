@@ -152,6 +152,58 @@ Spojový seznam je datová struktura, kde každý prvek (uzel) obsahuje data a r
 - Seznam uchovává reference na první i poslední uzel
 - Umožňuje procházení v obou směrech
 
+```java
+class Node {
+    int data;
+    Node prev;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.prev = null;
+        this.next = null;
+    }
+}
+
+class DoubleLinkedList {
+    Node head;
+    Node tail;
+
+    // Přidání na konec
+    void add(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = tail = newNode;
+        } else {
+            tail.next = newNode;
+            newNode.prev = tail;
+            tail = newNode;
+        }
+    }
+
+    // Výpis od začátku
+    void printForward() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+
+    // Výpis od konce
+    void printBackward() {
+        Node current = tail;
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.prev;
+        }
+        System.out.println();
+    }
+}
+```
+
 **Výhody:**
 - Efektivní vkládání a mazání na začátku i konci: O(1)
 - Umožňuje procházení v obou směrech

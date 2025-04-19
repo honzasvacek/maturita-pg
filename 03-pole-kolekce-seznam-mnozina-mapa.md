@@ -18,6 +18,8 @@ Pole je jednoduchá datová struktura, která:
 - Umožňuje přímý přístup k prvkům pomocí indexu (konstantní časová složitost O(1))
 - Je uložena souvisle v paměti
 
+![Pole](./Images/IMG_1346.JPG)
+
 **Výhody:**
 - Rychlý přístup k libovolnému prvku
 - Jednoduchá implementace
@@ -117,6 +119,8 @@ Implementace mapy pomocí hašovací tabulky:
 - Dobrá hašovací funkce minimalizuje kolize
 - V Javě je implementována metodou hashCode()
 
+![Hashmap](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRGwNvgV9NA0jHLn8L4cQoIu116CgADojLgTf_yJkejNCjW8iOM3cqItZ6EZjneFhcPQ9aGV6MAdBrMbT-s7iKo-3B2mNrS-WS5pijqEW9OtVOb-QJigA91bjkcpT0ywEDhdz93gMpblBP/s1600/how+hashmap+works+internally+in+java+.png)
+
 ### TreeMap
 Implementace mapy pomocí vyváženého binárního stromu:
 - Udržuje klíče seřazené
@@ -136,6 +140,8 @@ Spojový seznam je datová struktura, kde každý prvek (uzel) obsahuje data a r
 - Poslední uzel odkazuje na null
 - Seznam uchovává referenci na první uzel (hlavu)
 
+![Pole](./Images/IMG_1349.PNG)
+
 **Výhody:**
 - Dynamická velikost
 - Efektivní vkládání a mazání na začátku: O(1)
@@ -147,6 +153,8 @@ Spojový seznam je datová struktura, kde každý prvek (uzel) obsahuje data a r
 - Nelze efektivně procházet pozpátku
 
 ### Obousměrný spojový seznam
+
+![Pole](./Images/IMG_1347.JPG)
 
 - Každý uzel obsahuje data a reference na následující i předchozí uzel
 - Seznam uchovává reference na první i poslední uzel

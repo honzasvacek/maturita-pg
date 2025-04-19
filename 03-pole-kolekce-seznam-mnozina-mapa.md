@@ -66,6 +66,35 @@ Implementace seznamu pomocí pole:
 - Interně používá pole, které se automaticky zvětšuje podle potřeby
 - Dynamicky mění velikost (typicky zdvojnásobením), když je potřeba více místa
 
+```java
+//The ArrayList class has many useful methods. For example, to add elements to the list, use the add() method:
+
+import java.util.ArrayList;
+
+public class Main {
+  public static void main(String[] args) {
+    ArrayList<String> cars = new ArrayList<String>();
+    cars.add("Volvo");
+    cars.add("BMW");
+    cars.add("Ford");
+    cars.add(0, "Mazda"); // Insert element at the beginning of the list (0)
+    System.out.println(cars);
+  }
+}
+
+// To access an element in the ArrayList, use the get() method and refer to the index number:
+cars.get(0);
+
+// To modify an element, use the set() method and refer to the index number:
+cars.set(0, "Opel");
+
+// To remove an element, use the remove() method and refer to the index number:
+cars.remove(0);
+
+// To remove all the elements in the ArrayList, use the clear() method:
+cars.clear();
+```
+
 **Operace:**
 - Přístup k prvku: O(1)
 - Přidání/odebrání na konci: Amortizovaná O(1)
@@ -76,6 +105,39 @@ Implementace seznamu pomocí pole:
 Implementace seznamu pomocí spojového seznamu:
 - Každý prvek obsahuje data a odkaz na další (a případně předchozí) prvek
 - Efektivnější pro časté vkládání a mazání uprostřed seznamu
+- The LinkedList class is almost identical to the ArrayList, what java syntax concerns
+
+```java
+// Import the LinkedList class
+import java.util.LinkedList;
+
+public class Main {
+  public static void main(String[] args) {
+    LinkedList<String> cars = new LinkedList<String>();
+    cars.add("Volvo");
+    cars.add("BMW");
+    cars.add("Ford");
+    cars.add("Mazda");
+    System.out.println(cars);
+  }
+}
+```
+**ArrayList vs. LinkedList**
+
+- The LinkedList class is a collection which can contain many objects of the same type, just like the ArrayList.
+
+- The LinkedList class has all of the same methods as the ArrayList class because they both implement the List interface. This means that you can add items, change items, remove items and clear the list in the same way.
+
+- However, while the ArrayList class and the LinkedList class can be used in the same way, they are built very differently.
+How the ArrayList works
+
+- The ArrayList class has a regular array inside it. When an element is added, it is placed into the array. If the array is not big enough, a new, larger array is created to replace the old one and the old one is removed.
+How the LinkedList works
+
+- The LinkedList stores its items in "containers." The list has a link to the first container and each container has a link to the next container in the list. To add an element to the list, the element is placed into a new container and that container is linked to one of the other containers in the list.
+**When To Use**
+- Use an ArrayList for storing and accessing data, and LinkedList to manipulate data.
+
 
 **Operace:**
 - Přístup k prvku: O(n)
@@ -95,6 +157,36 @@ Implementace množiny pomocí hašovací tabulky:
 - Využívá hašovací funkci k určení pozice prvku
 - Velmi rychlé operace vkládání, mazání a vyhledávání
 - Neposkytuje žádné záruky ohledně pořadí prvků
+
+- A HashSet is a collection of items where every item is unique, and it is found in the java.util package:
+```java
+//Create a HashSet object called cars that will store strings:
+import java.util.HashSet; // Import the HashSet class
+HashSet<String> cars = new HashSet<String>();
+
+public class Main {
+  public static void main(String[] args) {
+    HashSet<String> cars = new HashSet<String>();
+    cars.add("Volvo"); //add item
+    cars.add("BMW");
+    cars.add("Ford");
+    cars.add("BMW");
+    cars.add("Mazda");
+    System.out.println(cars);
+  }
+}
+
+// Note: In the example above, even though BMW is added twice it only appears once in the set because every item in a set has to be unique.
+
+//To check whether an item exists in a HashSet, use the contains() method:
+cars.contains("Mazda");
+
+//To remove an item, use the remove() method:
+cars.remove("Volvo");
+
+//To remove all items, use the clear() method:
+cars.clear();
+
 
 **Operace:**
 - Vkládání, vyhledávání, mazání: O(1) v průměrném případě
@@ -122,9 +214,29 @@ Implementace mapy pomocí hašovací tabulky:
 - Negarantuje pořadí prvků
 - Klíče musí mít správně implementované metody hashCode() a equals()
 
+- ![How Hashmaps in Java work](https://www.youtube.com/watch?v=f0n5-LPMSXU)
+
 **Operace:**
 - Vkládání, vyhledávání, mazání: O(1) v průměrném případě
 - V nejhorším případě: O(n)
+
+```java
+// Create a HashMap object called capitalCities
+HashMap<String, String> capitalCities = new HashMap<String, String>();
+
+// Add keys and values (Country, City)
+capitalCities.put("England", "London");
+capitalCities.put("Germany", "Berlin");
+
+// To access a value in the HashMap, use the get() method and refer to its key:
+capitalCities.get("England");
+
+//To remove an item, use the remove() method and refer to the key:
+capitalCities.remove("England");
+
+// To remove all items, use the clear() method:
+capitalCities.clear();
+```
 
 **Hašovací funkce** je klíčová pro efektivitu HashMap:
 - Přiřazuje objektům číselnou hodnotu (hash)

@@ -186,7 +186,7 @@ cars.remove("Volvo");
 
 //To remove all items, use the clear() method:
 cars.clear();
-
+```
 
 **Operace:**
 - Vkládání, vyhledávání, mazání: O(1) v průměrném případě

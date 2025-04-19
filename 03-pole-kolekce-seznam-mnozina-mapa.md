@@ -10,6 +10,18 @@
 - Vhodné užití jednotlivých struktur
 - Úskalí a efektivita
 
+## Obecné srovnání sturktur
+| Datová struktura    | Přidání                          | Odebrání                         | Nalezení                           | Poznámky                                                                 |
+|---------------------|----------------------------------|----------------------------------|------------------------------------|-------------------------------------------------------------------------|
+| **Pole (Array)**    | O(n)                             | O(n)                             | O(1) přístup, O(n) vyhledávání     | Pevná velikost, efektivní přístup přes index                            |
+| **ArrayList**       | O(1)* na konec, O(n) jinak       | O(n)                             | O(n)                               | Dynamická velikost, rychlý přístup přes index                           |
+| **LinkedList**      | O(1) na začátek/konec            | O(1) na začátek/konec            | O(n)                               | Efektivní vkládání/mazání, pomalý přístup                              |
+| **HashSet**         | O(1) průměrně, O(n) nejhůř       | O(1) průměrně, O(n) nejhůř       | O(1) průměrně, O(n) nejhůř         | Unikátní prvky, negarantuje pořadí, závislé na kvalitě hashCode()       |
+| **TreeSet**         | O(log n)                         | O(log n)                         | O(log n)                           | Udržuje prvky seřazené, vhodné pro rozsahové dotazy                     |
+| **HashMap**         | O(1) průměrně, O(n) nejhůř       | O(1) průměrně, O(n) nejhůř       | O(1) průměrně, O(n) nejhůř         | Klíče musí být unikátní, velmi rychlé operace                           |
+| **TreeMap**         | O(log n)                         | O(log n)                         | O(log n)                           | Klíče jsou seřazené, ideální pro rozsahy nebo tříděné výpisy            |
+
+
 ## Pole
 
 Pole je jednoduchá datová struktura, která:

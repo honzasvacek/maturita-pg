@@ -140,7 +140,7 @@ Existuje několik způsobů, jak reprezentovat graf v paměti počítače:
 - A[i][j] = 1, pokud existuje hrana z vrcholu i do vrcholu j, jinak A[i][j] = 0
 - U ohodnocených grafů A[i][j] = váha hrany
 
-!(./Images/IMG_1350.JPG)
+![IMG](./Images/IMG_1350.JPG)
 
 Vlastnosti:
 - Paměťová složitost: O(n²)
@@ -152,7 +152,7 @@ Vlastnosti:
 - Pro každý vrchol je uchováván seznam sousedních vrcholů
 - Může být implementováno jako pole seznamů nebo dynamické datové struktury
 
-!(./Images/IMG_1352.JPG)
+![IMG](./Images/IMG_1351.JPG)
 
 Vlastnosti:
 - Paměťová složitost: O(n + m), kde m je počet hran
@@ -169,7 +169,7 @@ Vlastnosti:
 - Vhodné pro některé algoritmy (např. Kruskalův algoritmus)
 - Nevhodné pro zjišťování sousedů vrcholu
 
-!(./Images/IMG_1351.JPG)
+![IMG](./Images/IMG_1352.JPG)
 
 ### Matice Incidence
 - Matice o rozměrech n×m (n vrcholů, m hran)

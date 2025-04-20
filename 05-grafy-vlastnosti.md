@@ -156,15 +156,6 @@ Vlastnosti:
 - Vhodné pro řídké grafy
 - Efektivní pro procházení sousedů vrcholu
 
-### Matice Incidence
-- Matice o rozměrech n×m (n vrcholů, m hran)
-- Pro neorientovaný graf: A[i][j] = 1, pokud vrchol i náleží hraně j, jinak 0
-- Pro orientovaný graf: A[i][j] = 1, pokud hrana j vychází z vrcholu i, A[i][j] = -1, pokud hrana j vstupuje do vrcholu i, jinak 0
-
-Vlastnosti:
-- Paměťová složitost: O(n×m)
-- Méně často používaná než předchozí metody
-
 ### Seznam hran
 - Seznam všech hran grafu, kde každá hrana je reprezentována dvojicí (nebo trojicí u ohodnocených grafů) indexů vrcholů
 
@@ -174,8 +165,17 @@ Vlastnosti:
 - Vhodné pro některé algoritmy (např. Kruskalův algoritmus)
 - Nevhodné pro zjišťování sousedů vrcholu
 
-## Příklady využití grafů
+### Matice Incidence
+- Matice o rozměrech n×m (n vrcholů, m hran)
+- Pro neorientovaný graf: A[i][j] = 1, pokud vrchol i náleží hraně j, jinak 0
+- Pro orientovaný graf: A[i][j] = 1, pokud hrana j vychází z vrcholu i, A[i][j] = -1, pokud hrana j vstupuje do vrcholu i, jinak 0
 
+Vlastnosti:
+- Paměťová složitost: O(n×m)
+- Méně často používaná než předchozí metody
+- Topfer: *"V algoritmech se nepoužívá"*
+  
+## Příklady využití grafů
 - **Mapy a navigace** - města jako vrcholy, silnice jako hrany
 - **Sociální sítě** - lidé jako vrcholy, vztahy jako hrany
 - **Počítačové sítě** - zařízení jako vrcholy, spojení jako hrany

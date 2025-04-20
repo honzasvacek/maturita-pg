@@ -25,8 +25,10 @@
 - orientované
 
 ### Další typy grafů
+- **Strom** - souvislý graf bez cyklů
+- **Les** - všechny jeho komponenty souvislosti jsou stromy (v lese jsou stromy 💀)
 - **Úplný graf** - každý vrchol je spojen hranou s každým jiným vrcholem
-                 - počet hran = $ \frac{n(n - 1)}{2} $
+  <pre> ``` n(n - 1)/2 //počet hran``` </pre>
   
 - **Bipartitní graf** - Pojmem bipartitní graf nebo sudý graf se v teorii grafů označuje takový graf, jehož množinu vrcholů je možné rozdělit na dvě disjunktní množiny tak, že žádné dva vrcholy ze stejné množiny nejsou spojeny hranou.
 ![Bipart Graph](https://labuladong.online/algo/images/algo4/1-en.jpg)
@@ -144,7 +146,7 @@ Vlastnosti:
 - Vhodné pro husté grafy
 - Nevhodné pro řídké grafy (plýtvání pamětí)
 
-### Seznam sousedů
+### Seznam následníků
 - Pro každý vrchol je uchováván seznam sousedních vrcholů
 - Může být implementováno jako pole seznamů nebo dynamické datové struktury
 
@@ -154,7 +156,7 @@ Vlastnosti:
 - Vhodné pro řídké grafy
 - Efektivní pro procházení sousedů vrcholu
 
-### Incidenční matice
+### Matice Incidence
 - Matice o rozměrech n×m (n vrcholů, m hran)
 - Pro neorientovaný graf: A[i][j] = 1, pokud vrchol i náleží hraně j, jinak 0
 - Pro orientovaný graf: A[i][j] = 1, pokud hrana j vychází z vrcholu i, A[i][j] = -1, pokud hrana j vstupuje do vrcholu i, jinak 0

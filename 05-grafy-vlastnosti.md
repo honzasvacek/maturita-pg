@@ -10,41 +10,32 @@
 - Topologické uspořádání
 - Reprezentace grafů v paměti
 
-## Základní pojmy
-
 **Graf** je matematická struktura tvořená množinou vrcholů (uzlů) a množinou hran, které propojují některé dvojice vrcholů.
 
-Formálně je graf G definován jako uspořádaná dvojice G = (V, E), kde:
-- V je neprázdná množina vrcholů (vertices)
-- E je množina hran (edges), které spojují vrcholy
+### Dělení grafů 
+**Ohodnocení**
+- Neohodnocené
+- Ohodnocené
+  - Hranově(délka/ nosnost/ ... silnice)
+  - Vrcholově(poplatky na letištích)
 
-### Základní terminologie
-- **Vrchol** (uzol, node) - základní prvek grafu
-- **Hrana** (edge) - spojnice mezi vrcholy
-- **Stupeň vrcholu** - počet hran, které z vrcholu vycházejí
-- **Sousední vrcholy** - vrcholy spojené hranou
-- **Smyčka** - hrana vedoucí z vrcholu do téhož vrcholu
-- **Izolovaný vrchol** - vrchol bez hran
 
-## Typy grafů
-
-### Podle orientace hran
-- **Neorientovaný graf** - hrany nemají směr, vztah mezi vrcholy je symetrický
-- **Orientovaný graf** (digraf) - hrany mají určený směr, vztah mezi vrcholy může být jednosměrný
-  - U orientovaného grafu rozlišujeme vstupní a výstupní stupeň vrcholu
-
-### Podle ohodnocení
-- **Neohodnocený graf** - hrany ani vrcholy nemají přiřazené hodnoty
-- **Ohodnocený graf** (vážený graf) - hranám nebo vrcholům jsou přiřazeny číselné hodnoty (váhy)
-  - Váhy mohou představovat vzdálenost, cenu, kapacitu, atd.
+**Orientace**
+- neorientované
+- orientované
 
 ### Další typy grafů
 - **Úplný graf** - každý vrchol je spojen hranou s každým jiným vrcholem
-- **Bipartitní graf** - vrcholy lze rozdělit do dvou disjunktních množin tak, že hrany vedou pouze mezi vrcholy z různých množin
-- **Acyklický graf** - graf neobsahující žádný cyklus (uzavřenou cestu)
-- **Multigraf** - graf umožňující více hran mezi stejnými vrcholy
-- **Pseudograf** - graf umožňující smyčky a násobné hrany
+  
+- **Bipartitní graf** - Pojmem bipartitní graf nebo sudý graf se v teorii grafů označuje takový graf, jehož množinu vrcholů je možné rozdělit na dvě disjunktní množiny tak, že žádné dva vrcholy ze stejné množiny nejsou spojeny hranou.
+![Bipart Graph](https://labuladong.online/algo/images/algo4/1-en.jpg)
 
+- **Acyklický graf** - graf neobsahující žádný cyklus
+  
+- **Multigraf** - graf umožňující více hran mezi stejnými vrcholy(Multihrany)
+- **Pseudograf** - graf umožňující smyčky a násobné hrany
+  - pseudograph is a multigraph that is permitted to have loops
+![MultiGraf](https://drek4537l1klr.cloudfront.net/malak/Figures/03fig12.jpg)
 ## Cesta a souvislost grafu
 
 ### Cesta

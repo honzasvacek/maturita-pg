@@ -26,6 +26,7 @@
 
 ### Další typy grafů
 - **Úplný graf** - každý vrchol je spojen hranou s každým jiným vrcholem
+                 - počet hran = $ \frac{n(n - 1)}{2} $
   
 - **Bipartitní graf** - Pojmem bipartitní graf nebo sudý graf se v teorii grafů označuje takový graf, jehož množinu vrcholů je možné rozdělit na dvě disjunktní množiny tak, že žádné dva vrcholy ze stejné množiny nejsou spojeny hranou.
 ![Bipart Graph](https://labuladong.online/algo/images/algo4/1-en.jpg)

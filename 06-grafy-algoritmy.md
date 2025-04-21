@@ -76,7 +76,7 @@ DFS je algoritmus, který prochází graf tak, že jde co nejhlouběji podél je
 4. Když nelze jít dál, vracíme se (backtracking) a zkoušíme jinou cestu
 
 **Implementace:**
-- Používá zásobník (implicitně rekurzí nebo explicitně)
+- Buď rekurzivní funkce nebo cyklus a zásobník
 - Každý vrchol je zpracován pouze jednou
 - Pro každý vrchol si pamatujeme:
   - Čas objevení (discovery time)

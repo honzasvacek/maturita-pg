@@ -249,11 +249,11 @@ Hrany nesmí být záporně ohodnocené.
   - možná existuje kratší cesta, po které se do vrcholu i můžu dostat 
 **2)Hlavní cyklus**
 ```
-while(trvale_vrcholy<sub>cíl</sub>) == false) {
+while (trvale_vrcholyᶜⁱˡ == false) {
   - V ... vrchol s nejmenší dočasnou hodnotou (práce O(n))
-  - trvale_vrcholy<sub>V</sub> = true (práce O(1))
+  - trvale_vrcholyⱽ = true (práce O(1))
   - Pro všechny dočasné vrcholy u, kde existuje hrana(v,u)(jsou sousedi):
-    if h<sub>v</sub> + d<sub>vu</sub> < h<sub>u</sub> pak h<sub>u</sub> = h<sub>v</sub> + d<sub>vu</sub>
+    if hᵥ + dᵥᵤ < hᵤ then hᵤ = hᵥ + dᵥᵤ
 }
 ```
 

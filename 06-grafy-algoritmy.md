@@ -149,6 +149,13 @@ Komponenta grafu je maximální souvislý podgraf. Nesouvislý graf má více ko
    b. Spustíme BFS nebo DFS z tohoto vrcholu
    c. Všechny navštívené vrcholy patří do aktuální komponenty
 
+Představa:
+- Můžu si udělat pole barvy, kde vždy začnu jednou barvou, obarvím všechny vrcholy, do kterých ze z daného vrcholu mohu dostat.
+- Poté najdu dosud neobarvený vrchol a barvím všechny vrcholy, do kterých se z něho můžu dostat jinou barvou.
+- Takto pokračuji, dokud všechny vrcholy nejsou obarveny.
+- Na konci mám počet komponent i komponenty samotné - vím, jaký vrchol patří do jaké komponenty.
+- Nepoužívám barvy ale třeba čísla.
+
 **Pseudokód:**
 ```
 findComponents(G):               // G je graf
@@ -204,7 +211,8 @@ reconstructPath(s, t):           // s je počáteční vrchol, t je cílový vrc
 
 ## Nalezení nejkratší cesty v neohodnoceném grafu
 
-V neohodnoceném grafu je nejkratší cesta ta s nejmenším počtem hran. BFS přirozeně nachází nejkratší cestu.
+V neohodnoceném grafu je nejkratší cesta ta s nejmenším počtem hran. Když budu graf procházet do hloubky, přitozeně najdu nejkratší cestu.
+Používá se takzvaýy algoritmus vlny.
 
 **Algoritmus:**
 1. Spustíme BFS z počátečního vrcholu s
@@ -213,13 +221,44 @@ V neohodnoceném grafu je nejkratší cesta ta s nejmenším počtem hran. BFS p
    - Zjistit vzdálenost k libovolnému vrcholu
    - Zrekonstruovat nejkratší cestu
 
+- Pokud chci rekonstruovat cestu, mohu na začátku algoritmu prohodit počáteční a cílový vrchol.
+- Poté co z cílového najdu cestu k počátečnímu, tak jelikož si pamatuji předchůdce, tak můžu rovnou rekunstrovat cestu
+z počátečního do cílového a vypisovat ji. Zkrátka nemusím cestu pak obracet, což bych musel, kdybych šel z počátečního do cílového.
+
 ## Nalezení nejkratší cesty v ohodnoceném grafu
 
 Pro nalezení nejkratší cesty v ohodnoceném grafu (kde hrany mají různé váhy) používáme specializované algoritmy.
 
 ### Dijkstrův algoritmus
 
-Dijkstrův algoritmus nachází nejkratší cesty z jednoho vrcholu do všech ostatních v grafu s nezápornými vahami hran.
+Algoritmus pro nalezení nejkratší cesty v ohodnoceném grafu.
+Hrany nesmí být záporně ohodnocené.
+
+## Jak Dijkstrův algortimus funguje?
+
+**1)Incializace**
+- Pole h[], kde h<sub>i</sub> = "&infin;" (Nějaké velké číslo), i ≠ start
+- h<sub>start</sub> = 0
+- h<sub>i</sub> udává hodnotu nejkratší cesty, po které jsem se do vrcholu i dostal
+
+- Pole trvale_vrcholy[] [true, true, false, false, false, ....]
+- Kde trvale_vrcholy<sub>i</sub> udává, zda je hodnota trvalá nebo dočasná
+- trvalá -> true
+  - neexistuje kratší cesta, než ta moje, po které se dá do vrcholu i dostat
+- dočasná -> false
+  - možná existuje kratší cesta, po které se do vrcholu i můžu dostat 
+**2)Hlavní cyklus**
+```
+while(trvale_vrcholy<sub>cíl</sub>) == false) {
+  - V ... vrchol s nejmenší dočasnou hodnotou (práce O(n))
+  - trvale_vrcholy<sub>V</sub> = true (práce O(1))
+  - Pro všechny dočasné vrcholy u, kde existuje hrana(v,u)(jsou sousedi):
+    if h<sub>v</sub> + d<sub>vu</sub> < h<sub>u</sub> pak h<sub>u</sub> = h<sub>v</sub> + d<sub>vu</sub>
+}
+```
+
+**Step by step algoritmu**
+
 
 **Princip:**
 1. Každému vrcholu přiřadíme prozatímní vzdálenost (počáteční vrchol 0, ostatní ∞)

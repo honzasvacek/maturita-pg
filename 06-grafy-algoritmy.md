@@ -253,7 +253,7 @@ while (trvale_vrcholyᶜⁱˡ == false) {
   - V ... vrchol s nejmenší dočasnou hodnotou (práce O(n))
   - trvale_vrcholyⱽ = true (práce O(1))
   - Pro všechny dočasné vrcholy u, kde existuje hrana(v,u)(jsou sousedi):
-    if hᵥ + dᵥᵤ < hᵤ then hᵤ = hᵥ + dᵥᵤ
+    if hᵥ + dᵥᵤ < hᵤ then hᵤ = hᵥ + dᵥᵤ //Zkoumám, zda není výhodnější jít do vrcholu u přes vrchol v
 }
 ```
 

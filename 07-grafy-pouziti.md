@@ -27,6 +27,20 @@ Vlastnosti:
 - Vhodné pro husté grafy
 - Nevhodné pro řídké grafy (plýtvání pamětí)
 
+**Výhody:**
+- Konstantní čas ověření existence hrany O(1)
+- Jednoduchá implementace
+- Efektivní pro husté grafy
+
+**Nevýhody:**
+- Paměťová náročnost O(V²) i pro řídké grafy
+- Neefektivní při přidávání nových vrcholů (nutno alokovat novou matici)
+
+**Vhodné pro:**
+- Husté grafy (E ≈ V²)
+- Malé grafy
+- Algoritmy často ověřující existenci hran
+
 ### Seznam následníků
 - Pro každý vrchol je uchováván seznam sousedních vrcholů
 - Může být implementováno jako pole seznamů nebo dynamické datové struktury
@@ -38,36 +52,6 @@ Vlastnosti:
 - Časová složitost zjištění existence hrany: O(stupeň vrcholu)
 - Vhodné pro řídké grafy
 - Efektivní pro procházení sousedů vrcholu
-
-### Seznam hran
-- Seznam všech hran grafu, kde každá hrana je reprezentována dvojicí (nebo trojicí u ohodnocených grafů) indexů vrcholů
-
-Vlastnosti:
-- Paměťová složitost: O(m)
-- Jednoduchá implementace
-- Vhodné pro některé algoritmy (např. Kruskalův algoritmus)
-- Nevhodné pro zjišťování sousedů vrcholu
-
-![IMG](./Images/IMG_1352.JPG)
-
-### Matice Incidence
-- Matice o rozměrech n×m (n vrcholů, m hran)
-- Pro neorientovaný graf: A[i][j] = 1, pokud vrchol i náleží hraně j, jinak 0
-- Pro orientovaný graf: A[i][j] = 1, pokud hrana j vychází z vrcholu i, A[i][j] = -1, pokud hrana j vstupuje do vrcholu i, jinak 0
-
-Vlastnosti:
-- Paměťová složitost: O(n×m)
-- Méně často používaná než předchozí metody
-- Topfer: *"V algoritmech se nepoužívá"*
-  
-
-## Reprezentace grafu v programu
-
-Existuje několik způsobů, jak efektivně reprezentovat graf v paměti počítače. Každá reprezentace má své výhody a nevýhody, které je třeba zvážit podle typu grafu a operací, které s ním budeme provádět.
-
-### Seznam sousedů (Adjacency List)
-
-Každý vrchol má seznam svých sousedů.
 
 **Implementace:**
 - Pole nebo seznam (ArrayList) objektů reprezentujících vrcholy
@@ -86,52 +70,14 @@ Každý vrchol má seznam svých sousedů.
 - Řídké grafy (s malým počtem hran oproti počtu vrcholů)
 - Algoritmy, které často procházejí sousedy (BFS, DFS)
 
-```
-// Pseudokód reprezentace seznamu sousedů
-class Vrchol {
-    id
-    seznam_sousedů    // seznam nebo pole odkazů na sousední vrcholy
-}
+### Seznam hran
+- Seznam všech hran grafu, kde každá hrana je reprezentována dvojicí (nebo trojicí u ohodnocených grafů) indexů vrcholů
 
-class Graf {
-    seznam_vrcholů    // seznam nebo pole všech vrcholů
-}
-```
-
-### Matice sousednosti (Adjacency Matrix)
-
-Čtvercová matice, kde hodnota M[i][j] označuje, zda existuje hrana mezi vrcholy i a j.
-
-**Implementace:**
-- Dvourozměrné pole hodnot (typicky boolean nebo int)
-- M[i][j] = 1 (nebo true), pokud existuje hrana z vrcholu i do j
-- M[i][j] = 0 (nebo false), pokud hrana neexistuje
-
-**Výhody:**
-- Konstantní čas ověření existence hrany O(1)
+Vlastnosti:
+- Paměťová složitost: O(m)
 - Jednoduchá implementace
-- Efektivní pro husté grafy
-
-**Nevýhody:**
-- Paměťová náročnost O(V²) i pro řídké grafy
-- Neefektivní při přidávání nových vrcholů (nutno alokovat novou matici)
-
-**Vhodné pro:**
-- Husté grafy (E ≈ V²)
-- Malé grafy
-- Algoritmy často ověřující existenci hran
-
-```
-// Pseudokód reprezentace matice sousednosti
-class Graf {
-    velikost                  // počet vrcholů
-    matice[velikost][velikost] // hodnoty: 0 = bez hrany, 1 = hrana existuje
-}
-```
-
-### Seznam hran (Edge List)
-
-Seznam všech hran grafu.
+- Vhodné pro některé algoritmy (např. Kruskalův algoritmus)
+- Nevhodné pro zjišťování sousedů vrcholu
 
 **Implementace:**
 - Seznam nebo pole objektů hran
@@ -148,20 +94,19 @@ Seznam všech hran grafu.
 
 **Vhodné pro:**
 - Algoritmy pracující především s hranami (např. Kruskalův algoritmus)
-- Velmi řídké grafy
+- Velmi řídké grafy  
+  
+![IMG](./Images/IMG_1352.JPG)
 
-```
-// Pseudokód reprezentace seznamu hran
-class Hrana {
-    vrchol_začátek
-    vrchol_konec
-}
+### Matice Incidence
+- Matice o rozměrech n×m (n vrcholů, m hran)
+- Pro neorientovaný graf: A[i][j] = 1, pokud vrchol i náleží hraně j, jinak 0
+- Pro orientovaný graf: A[i][j] = 1, pokud hrana j vychází z vrcholu i, A[i][j] = -1, pokud hrana j vstupuje do vrcholu i, jinak 0
 
-class Graf {
-    seznam_vrcholů    // seznam všech vrcholů
-    seznam_hran       // seznam všech hran
-}
-```
+Vlastnosti:
+- Paměťová složitost: O(n×m)
+- Méně často používaná než předchozí metody
+- Topfer: *"V algoritmech se nepoužívá"*
 
 ## Reprezentace ohodnoceného grafu
 

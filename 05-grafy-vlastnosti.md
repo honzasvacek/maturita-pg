@@ -8,7 +8,6 @@
 - Kostra grafu
 - Stromy a binární stromy
 - Topologické uspořádání
-- Reprezentace grafů v paměti
 
 **Graf** je matematická struktura tvořená množinou vrcholů (uzlů) a množinou hran, které propojují některé dvojice vrcholů.
 
@@ -131,56 +130,6 @@ Využití topologického uspořádání:
 - Kurz studia (předpoklady pro předměty)
 - Vyhodnocení výrazů v kompilátorech
 
-## Reprezentace grafů v paměti
-
-Existuje několik způsobů, jak reprezentovat graf v paměti počítače:
-
-### Matice sousednosti
-- Čtvercová matice A o rozměrech n×n (kde n je počet vrcholů)
-- A[i][j] = 1, pokud existuje hrana z vrcholu i do vrcholu j, jinak A[i][j] = 0
-- U ohodnocených grafů A[i][j] = váha hrany
-
-![IMG](./Images/IMG_1350.JPG)
-
-Vlastnosti:
-- Paměťová složitost: O(n²)
-- Časová složitost zjištění existence hrany: O(1)
-- Vhodné pro husté grafy
-- Nevhodné pro řídké grafy (plýtvání pamětí)
-
-### Seznam následníků
-- Pro každý vrchol je uchováván seznam sousedních vrcholů
-- Může být implementováno jako pole seznamů nebo dynamické datové struktury
-
-![IMG](./Images/IMG_1351.JPG)
-
-Vlastnosti:
-- Paměťová složitost: O(n + m), kde m je počet hran
-- Časová složitost zjištění existence hrany: O(stupeň vrcholu)
-- Vhodné pro řídké grafy
-- Efektivní pro procházení sousedů vrcholu
-
-### Seznam hran
-- Seznam všech hran grafu, kde každá hrana je reprezentována dvojicí (nebo trojicí u ohodnocených grafů) indexů vrcholů
-
-Vlastnosti:
-- Paměťová složitost: O(m)
-- Jednoduchá implementace
-- Vhodné pro některé algoritmy (např. Kruskalův algoritmus)
-- Nevhodné pro zjišťování sousedů vrcholu
-
-![IMG](./Images/IMG_1352.JPG)
-
-### Matice Incidence
-- Matice o rozměrech n×m (n vrcholů, m hran)
-- Pro neorientovaný graf: A[i][j] = 1, pokud vrchol i náleží hraně j, jinak 0
-- Pro orientovaný graf: A[i][j] = 1, pokud hrana j vychází z vrcholu i, A[i][j] = -1, pokud hrana j vstupuje do vrcholu i, jinak 0
-
-Vlastnosti:
-- Paměťová složitost: O(n×m)
-- Méně často používaná než předchozí metody
-- Topfer: *"V algoritmech se nepoužívá"*
-  
 ## Příklady využití grafů
 - **Mapy a navigace** - města jako vrcholy, silnice jako hrany
 - **Sociální sítě** - lidé jako vrcholy, vztahy jako hrany

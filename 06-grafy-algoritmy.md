@@ -11,6 +11,14 @@
 - Efektivita grafových algoritmů
 - Příklady využití
 
+## Obsah Lány
+- nalezení cesty a nejkratší cesty v neohodnoceném a ohodnoceném grafu
+- testování souvislosti grafu a určení komponent
+- prohledávání do šířky a do hloubky
+- rekurze, vhodné užití
+- určení minimální kostry grafu
+- efektivita; příklady
+
 ## Procházení grafu
 
 Existují dva základní způsoby systematického procházení grafu:

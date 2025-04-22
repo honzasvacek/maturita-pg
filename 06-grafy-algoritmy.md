@@ -266,8 +266,8 @@ while (trvale_vrcholyᶜⁱˡ == false) {
 ```
 
 **Step by step algoritmu**
-
-
+![Dijkstra](./Images/Algoritmy-226.jpg)
+![Dijkstra](./Images/Algoritmy-225.jpg)
 **Princip:**
 1. Každému vrcholu přiřadíme prozatímní vzdálenost (počáteční vrchol 0, ostatní ∞)
 2. Opakovaně vybíráme vrchol s nejmenší prozatímní vzdáleností

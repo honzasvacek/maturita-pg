@@ -375,9 +375,9 @@ Kruskal(G):                      // G je ohodnocený graf
 
 **Časová složitost:** O(E log E) nebo O(E log V)
 
-### Primův algoritmus
+### Jarníkův algoritmus
 
-Primův algoritmus buduje MST postupným rozšiřováním souvislého podgrafu.
+Jarníkův (Primův-jebat ho neumí si peložit článek z němčiny do anličtiny) algoritmus buduje MST postupným rozšiřováním souvislého podgrafu.
 
 **Princip:**
 1. Začneme s libovolným vrcholem
